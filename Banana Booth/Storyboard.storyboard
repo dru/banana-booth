@@ -66,6 +66,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="88y-YX-C5p" kind="push" id="aGU-8g-LCo"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </view>
@@ -123,17 +126,186 @@
             </objects>
             <point key="canvasLocation" x="257" y="103"/>
         </scene>
+        <!--Source Choose Controller-->
+        <scene sceneID="CdK-MJ-vvw">
+            <objects>
+                <viewController id="88y-YX-C5p" customClass="SourceChooseController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YK5-SF-djr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Srceen_rules_from_photo.png" id="tr8-tV-v64">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hasAttributedTitle="NO" lineBreakMode="middleTruncation" id="whd-V6-LYp">
+                                <rect key="frame" x="20" y="419" width="138" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                <state key="normal" image="Button_Camera_up.png">
+                                    <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="camera_button_click:" destination="88y-YX-C5p" eventType="touchUpInside" id="9w0-0c-wQl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hasAttributedTitle="NO" lineBreakMode="middleTruncation" id="pUc-Iu-w63">
+                                <rect key="frame" x="168" y="419" width="132" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="Button_Gallery_up.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="gallery_button_click:" destination="88y-YX-C5p" eventType="touchUpInside" id="Z7d-lp-Izo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gXE-lC-iG7"/>
+                    <connections>
+                        <outlet property="camera_button" destination="whd-V6-LYp" id="9Ft-kz-Z9q"/>
+                        <outlet property="gallery_button" destination="pUc-Iu-w63" id="K3Q-mk-CeF"/>
+                        <segue destination="DHR-uh-m4q" kind="push" identifier="editor" id="e7w-Tj-sua"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XWl-fM-u40" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="710" y="103"/>
+        </scene>
+        <!--Editor Controller-->
+        <scene sceneID="AIz-Lc-hiY">
+            <objects>
+                <viewController id="DHR-uh-m4q" customClass="EditorController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5t9-8g-HIt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Menu_BackGround.png" id="Dyj-1D-awd">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" id="Ip4-2V-A3d">
+                                <rect key="frame" x="0.0" y="372" width="320" height="108"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Footer_standart.png" id="RZA-MN-HwX">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="108"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hasAttributedTitle="NO" lineBreakMode="middleTruncation" id="b5V-ep-e7a">
+                                        <rect key="frame" x="31" y="40" width="258" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Start" image="Button_Start_bananing_up.png">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="dEq-Rj-lVJ" kind="push" id="kA3-H3-ZN8"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hasAttributedTitle="NO" lineBreakMode="middleTruncation" id="UCB-pY-j34">
+                                <rect key="frame" x="20" y="20" width="65" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="Button_Back_up.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="back_click:" destination="DHR-uh-m4q" eventType="touchDown" id="5AZ-Vj-kmb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Cc8-pM-TM9"/>
+                    <connections>
+                        <outlet property="start_button" destination="b5V-ep-e7a" id="KsR-Ua-a9m"/>
+                        <outlet property="user_photo" destination="Dyj-1D-awd" id="r8C-0s-UtK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UqT-aH-H0Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1157" y="103"/>
+        </scene>
+        <!--Player Controller-->
+        <scene sceneID="V4R-74-qmT">
+            <objects>
+                <viewController id="dEq-Rj-lVJ" customClass="PlayerController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QOm-Uj-GoX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hasAttributedTitle="NO" lineBreakMode="middleTruncation" id="Oxi-Ns-LfO">
+                                <rect key="frame" x="20" y="20" width="65" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="Button_Back_up.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="back_click:" destination="dEq-Rj-lVJ" eventType="touchDown" id="HYx-gP-HDs"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="pXY-RG-OxY"/>
+                    <connections>
+                        <outlet property="back_button" destination="Oxi-Ns-LfO" id="A1c-nN-jtF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UAp-cO-goQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1679" y="103"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Arrow_left_active.png" width="54" height="84"/>
         <image name="Arrow_right_active.png" width="54" height="84"/>
+        <image name="Button_Back_up.png" width="130" height="70"/>
+        <image name="Button_Camera_up.png" width="276" height="98"/>
+        <image name="Button_Gallery_up.png" width="264" height="98"/>
+        <image name="Button_Start_bananing_up.png" width="516" height="120"/>
         <image name="Button_Start_up.png" width="384" height="124"/>
         <image name="Footer_standart.png" width="640" height="216"/>
         <image name="Menu_BackGround.png" width="640" height="960"/>
+        <image name="Srceen_rules_from_photo.png" width="640" height="960"/>
         <image name="banana1.png" width="378" height="564"/>
         <image name="name_Nakedbanana.png" width="262" height="116"/>
     </resources>
     <classes>
+        <class className="EditorController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditorController.h"/>
+            <relationships>
+                <relationship kind="action" name="back_click:"/>
+                <relationship kind="outlet" name="start_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="user_photo" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
         <class className="MainController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MainController.h"/>
             <relationships>
@@ -145,6 +317,22 @@
                 <relationship kind="outlet" name="scrollview" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="start_button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="title" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="PlayerController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlayerController.h"/>
+            <relationships>
+                <relationship kind="action" name="back_click:"/>
+                <relationship kind="outlet" name="back_button" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="SourceChooseController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SourceChooseController.h"/>
+            <relationships>
+                <relationship kind="action" name="camera_button_click:"/>
+                <relationship kind="action" name="gallery_button_click:"/>
+                <relationship kind="outlet" name="camera_button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="gallery_button" candidateClass="UIButton"/>
             </relationships>
         </class>
     </classes>
