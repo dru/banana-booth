@@ -14,6 +14,10 @@
 - (IBAction)back_click:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *back_button;
 
+@property (weak, nonatomic) IBOutlet UIImageView *face;
+@property (weak, nonatomic) UIImage *face_image;
+@property (nonatomic) CGRect face_rect;
+
 @property (strong, nonatomic) MPMoviePlayerController *player;
 
 @end

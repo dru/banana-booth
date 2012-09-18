@@ -15,6 +15,10 @@
 @implementation PlayerController
 @synthesize back_button;
 @synthesize player;
+@synthesize face_image;
+@synthesize face_rect;
+@synthesize face;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,6 +37,16 @@
     NSString *moviePath = [bundle pathForResource:@"Animation_Naked_Banana_v1_1" ofType:@"mov"];
     NSURL *movieURL = [NSURL fileURLWithPath:moviePath];
     
+    face.image = face_image;
+    face.frame = face_rect;
+    
+    CGRect rect = face.frame;
+    rect.origin.x = 160;
+    rect.origin.y = 200;
+    rect.size.width = rect.size.width/2;
+    rect.size.height =  rect.size.height/2;
+    
+    face.frame = rect;
     
     player = [[MPMoviePlayerController alloc] initWithContentURL: movieURL];
     [player prepareToPlay];
@@ -44,8 +58,8 @@
     player.controlStyle = MPMovieControlStyleNone;
 //    player.shouldAutoplay = YES;
 //    [player setFullscreen:YES animated:YES];
-    
-    [player play];
+//    [player initWithContentURL];
+//    [player play];
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,6 +78,7 @@
 }
 - (void)viewDidUnload {
     [self setBack_button:nil];
+    [self setFace:nil];
     [super viewDidUnload];
 }
 @end
