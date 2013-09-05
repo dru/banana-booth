@@ -48,8 +48,8 @@
 		7189B35215CC4B01004E09CB /* Gallery_bottom_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 7189B34D15CC4B01004E09CB /* Gallery_bottom_circle.png */; };
 		7189B35315CC4B01004E09CB /* Gallery_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 7189B34E15CC4B01004E09CB /* Gallery_circle.png */; };
 		7189B35415CC4B01004E09CB /* Gallery_top_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 7189B34F15CC4B01004E09CB /* Gallery_top_circle.png */; };
-		71BD50DC1608E25E00A4838E /* Result_face_mask_vertical.png in Resources */ = {isa = PBXBuildFile; fileRef = 71BD50DB1608E25E00A4838E /* Result_face_mask_vertical.png */; };
 		71BD50DF1608EB0700A4838E /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BD50DE1608EB0700A4838E /* CoreImage.framework */; };
+		71BDDF4117D8DF7700E89C41 /* Result_face_mask_vertical.png in Resources */ = {isa = PBXBuildFile; fileRef = 71BDDF4017D8DF7700E89C41 /* Result_face_mask_vertical.png */; };
 		71CD543215BF0F9000736F65 /* Srceen_rules_from_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 71CD542D15BF0F9000736F65 /* Srceen_rules_from_photo.png */; };
 		71CD543315BF0F9000736F65 /* Button_Camera_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 71CD542E15BF0F9000736F65 /* Button_Camera_down.png */; };
 		71CD543415BF0F9000736F65 /* Button_Camera_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 71CD542F15BF0F9000736F65 /* Button_Camera_up.png */; };
@@ -126,8 +126,8 @@
 		7189B34D15CC4B01004E09CB /* Gallery_bottom_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gallery_bottom_circle.png; sourceTree = "<group>"; };
 		7189B34E15CC4B01004E09CB /* Gallery_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gallery_circle.png; sourceTree = "<group>"; };
 		7189B34F15CC4B01004E09CB /* Gallery_top_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gallery_top_circle.png; sourceTree = "<group>"; };
-		71BD50DB1608E25E00A4838E /* Result_face_mask_vertical.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Result_face_mask_vertical.png; path = ../../Downloads/Result_face_mask_vertical.png; sourceTree = "<group>"; };
 		71BD50DE1608EB0700A4838E /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		71BDDF4017D8DF7700E89C41 /* Result_face_mask_vertical.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Result_face_mask_vertical.png; sourceTree = "<group>"; };
 		71CD542D15BF0F9000736F65 /* Srceen_rules_from_photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Srceen_rules_from_photo.png; sourceTree = "<group>"; };
 		71CD542E15BF0F9000736F65 /* Button_Camera_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Camera_down.png; sourceTree = "<group>"; };
 		71CD542F15BF0F9000736F65 /* Button_Camera_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Camera_up.png; sourceTree = "<group>"; };
@@ -271,6 +271,7 @@
 				71CD543015BF0F9000736F65 /* Button_Gallery_down.png */,
 				71CD543115BF0F9000736F65 /* Button_Gallery_up.png */,
 				71CD543B15BF11FE00736F65 /* Button_Start_bananing_down.png */,
+				71BDDF4017D8DF7700E89C41 /* Result_face_mask_vertical.png */,
 				71CD543C15BF11FE00736F65 /* Button_Start_bananing_up.png */,
 				71D70A0D15D18D040059E763 /* Tunning_circle_zoom.png */,
 				71CD544515BF170200736F65 /* Camera_grid.png */,
@@ -283,7 +284,6 @@
 				71CD544B15BF298C00736F65 /* Button_Back_up.png */,
 				71CD544E15BF2C8B00736F65 /* Tune_chin.png */,
 				71CD544F15BF2C8B00736F65 /* Tune_eye.png */,
-				71BD50DB1608E25E00A4838E /* Result_face_mask_vertical.png */,
 				7108A8DD162F2FB600A4F174 /* Naked_banana_dance1.mov */,
 				71CD545015BF2C8B00736F65 /* Tune_mouth.png */,
 				7162B8CF15B867E000D79546 /* 114.png */,
@@ -406,9 +406,9 @@
 				71D70A1715D196510059E763 /* Tune_right_ear.png in Resources */,
 				71D70A1815D196510059E763 /* Tune_left_ear.png in Resources */,
 				71D70A1B15D199730059E763 /* Result_face_mask.png in Resources */,
-				71BD50DC1608E25E00A4838E /* Result_face_mask_vertical.png in Resources */,
 				7108A8CC162F226100A4F174 /* Result_face_mask_vertical.png in Resources */,
 				7108A8DE162F2FB600A4F174 /* Naked_banana_dance1.mov in Resources */,
+				71BDDF4117D8DF7700E89C41 /* Result_face_mask_vertical.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
