@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "mediaplayer/MPMoviePlayerController.h"
+#import "CHCSVParser.h"
 
 
-@interface PlayerController : UIViewController
+@interface PlayerController : UIViewController <CHCSVParserDelegate>
 - (IBAction)back_click:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *back_button;
 
