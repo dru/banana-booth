@@ -82,6 +82,8 @@
 		F726D81017DE599400FBBB07 /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F726D80F17DE599400FBBB07 /* CHCSVParser.m */; };
 		F726D81217DE88A000FBBB07 /* animation.csv in Resources */ = {isa = PBXBuildFile; fileRef = F726D81117DE88A000FBBB07 /* animation.csv */; };
 		F726D81417DF97EC00FBBB07 /* bonana.mov in Resources */ = {isa = PBXBuildFile; fileRef = F726D81317DF97EC00FBBB07 /* bonana.mov */; };
+		F759FCF117E7111000663F76 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F759FCF017E7111000663F76 /* CoreVideo.framework */; };
+		F759FCF317E7154900663F76 /* Animation_Naked_Banana_v4.mov in Resources */ = {isa = PBXBuildFile; fileRef = F759FCF217E7154900663F76 /* Animation_Naked_Banana_v4.mov */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -172,6 +174,8 @@
 		F726D80F17DE599400FBBB07 /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHCSVParser.m; sourceTree = "<group>"; };
 		F726D81117DE88A000FBBB07 /* animation.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = animation.csv; sourceTree = "<group>"; };
 		F726D81317DF97EC00FBBB07 /* bonana.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = bonana.mov; sourceTree = "<group>"; };
+		F759FCF017E7111000663F76 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		F759FCF217E7154900663F76 /* Animation_Naked_Banana_v4.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Animation_Naked_Banana_v4.mov; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +183,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F759FCF117E7111000663F76 /* CoreVideo.framework in Frameworks */,
 				F726D80917DE3B4700FBBB07 /* CoreMedia.framework in Frameworks */,
 				F726D80717DE3ACB00FBBB07 /* AssetsLibrary.framework in Frameworks */,
 				F726D80517DE3AC100FBBB07 /* AVFoundation.framework in Frameworks */,
@@ -198,6 +203,7 @@
 		7162B8A315B8674F00D79546 = {
 			isa = PBXGroup;
 			children = (
+				F759FCF017E7111000663F76 /* CoreVideo.framework */,
 				F726D80817DE3B4700FBBB07 /* CoreMedia.framework */,
 				F726D80617DE3ACB00FBBB07 /* AssetsLibrary.framework */,
 				F726D80417DE3AC000FBBB07 /* AVFoundation.framework */,
@@ -266,6 +272,7 @@
 		7162B8F515B8727300D79546 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F759FCF217E7154900663F76 /* Animation_Naked_Banana_v4.mov */,
 				F726D81317DF97EC00FBBB07 /* bonana.mov */,
 				F726D80217DE377400FBBB07 /* obama-test-4.mov */,
 				F726D7FA17DE2CE200FBBB07 /* obama2.png */,
@@ -450,6 +457,7 @@
 				F726D80317DE377400FBBB07 /* obama-test-4.mov in Resources */,
 				F726D81217DE88A000FBBB07 /* animation.csv in Resources */,
 				F726D81417DF97EC00FBBB07 /* bonana.mov in Resources */,
+				F759FCF317E7154900663F76 /* Animation_Naked_Banana_v4.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
