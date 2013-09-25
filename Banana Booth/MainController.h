@@ -22,6 +22,6 @@
 - (IBAction)left_touch:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIView *footer;
-@property (weak, nonatomic) IBOutlet UIImageView *title;
+@property (weak, nonatomic) IBOutlet UIImageView *titleImage;
 
 @end

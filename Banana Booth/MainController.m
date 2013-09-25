@@ -14,7 +14,6 @@
 
 @implementation MainController
 @synthesize footer;
-@synthesize title;
 @synthesize start_button;
 @synthesize scrollview;
 @synthesize right_button;
@@ -92,9 +91,9 @@
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [UIView animateWithDuration:0.3
                      animations:^{
-                         CGPoint center = title.center;
+                         CGPoint center = self.titleImage.center;
                          center.y = -54;
-                         title.center = center;
+                         self.titleImage.center = center;
                      }
      ];
 }
@@ -102,9 +101,9 @@
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     [UIView animateWithDuration:0.3
                      animations:^{
-                         CGPoint center = title.center;
+                         CGPoint center = self.titleImage.center;
                          center.y = 54;
-                         title.center = center;
+                         self.titleImage.center = center;
                      }
      ];
 }

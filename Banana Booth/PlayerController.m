@@ -14,15 +14,12 @@
 
 @interface PlayerController ()
 
-- (void)videoOutput;
 - (void)exportDidFinish:(AVAssetExportSession*)session;
-- (void)applyVideoEffectsToComposition:(AVMutableVideoComposition *)composition size:(CGSize)size duration:(Float64)duration;
 
 @property(nonatomic, strong) AVAsset *asset;
 @property(nonatomic, strong) NSMutableArray *currentDocument;
 @property(nonatomic, strong) NSMutableArray *currentLine;
-@property(nonatomic, strong) NSArray *animationValues;
-@property(nonatomic) NSUInteger totalFrames;
+@property(nonatomic, strong) NSDictionary *animationValues;
 
 @property(nonatomic) dispatch_queue_t mainSerializationQueue;
 @property(nonatomic) dispatch_queue_t rwAudioSerializationQueue;
@@ -43,26 +40,26 @@
 @property(nonatomic, strong) AVAssetReaderOutput* assetReaderAudioOutput;
 @property(nonatomic) NSUInteger frameCounter;
 
-@property(nonatomic) CGImageRef obamaIamge;
+@property(nonatomic, strong) MPMoviePlayerController *player;
+@property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 
 @end
 
 @implementation PlayerController
 @synthesize back_button;
-@synthesize player;
-@synthesize face_image;
-@synthesize face_rect;
-@synthesize face;
 
 - (void)parserDidBeginDocument:(CHCSVParser *)parser {
   self.currentDocument = [[NSMutableArray alloc] init];
 }
 - (void)parserDidEndDocument:(CHCSVParser *)parser {
-  NSArray *lastLine = [self.currentDocument objectAtIndex:[self.currentDocument count] - 1];
-  [self.currentDocument removeObjectAtIndex:[self.currentDocument count] - 1];
-  self.totalFrames = [[lastLine objectAtIndex:0] integerValue];
-  self.animationValues = [self.currentDocument copy];
+  NSLog(@"DONE parsing");
+  NSMutableDictionary *animationValues = [[NSMutableDictionary alloc] init];
+  for (NSArray *row in self.currentDocument) {
+    [animationValues setObject:[row subarrayWithRange:NSMakeRange(1, [row count]-1)] forKey:[row objectAtIndex:0]];
+  }
   self.currentDocument = nil;
+  self.animationValues = [animationValues copy];
+  dispatch_group_leave(self.dispatchGroup);
 }
 
 - (void)parser:(CHCSVParser *)parser didBeginLine:(NSUInteger)recordNumber {
@@ -75,6 +72,7 @@
 
 - (void)parser:(CHCSVParser *)parser didReadField:(NSString *)field atIndex:(NSInteger)fieldIndex {
   NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+  f.decimalSeparator = @".";
   [f setNumberStyle:NSNumberFormatterDecimalStyle];
   NSNumber * number = [f numberFromString:field];
   if (number) {
@@ -87,6 +85,7 @@
 
 - (void)parser:(CHCSVParser *)parser didFailWithError:(NSError *)error {
   NSLog(@"Error parsing CSV: %@", error);
+  self.cancelled = YES;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -98,76 +97,6 @@
     return self;
 }
 
-/*
-- (void)videoOutput
-{
-  // 1 - Early exit if there's no video file selected
-  if (!self.videoAsset) {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please Load a Video Asset First"
-                                                   delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
-    return;
-  }
-  
-  // 2 - Create AVMutableComposition object. This object will hold your AVMutableCompositionTrack instances.
-  AVMutableComposition *mixComposition = [[AVMutableComposition alloc] init];
-  
-  // 3 - Video track
-  AVMutableCompositionTrack *videoTrack = [mixComposition addMutableTrackWithMediaType:AVMediaTypeVideo
-                                                                      preferredTrackID:kCMPersistentTrackID_Invalid];
-
-  [videoTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, self.videoAsset.duration)
-                      ofTrack:[[self.videoAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0]
-                       atTime:kCMTimeZero error:nil];
-  
-  // 3.1 - Create AVMutableVideoCompositionInstruction
-  AVMutableVideoCompositionInstruction *mainInstruction = [AVMutableVideoCompositionInstruction videoCompositionInstruction];
-  mainInstruction.timeRange = CMTimeRangeMake(kCMTimeZero, self.videoAsset.duration);
-  
-  // 3.2 - Create an AVMutableVideoCompositionLayerInstruction for the video track and fix the orientation.
-  AVMutableVideoCompositionLayerInstruction *videolayerInstruction = [AVMutableVideoCompositionLayerInstruction videoCompositionLayerInstructionWithAssetTrack:videoTrack];
-  AVAssetTrack *videoAssetTrack = [[self.videoAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
-  
-  // 3.3 - Add instructions
-  mainInstruction.layerInstructions = [NSArray arrayWithObjects:videolayerInstruction,nil];
-  
-  AVMutableVideoComposition *mainCompositionInst = [AVMutableVideoComposition videoComposition];
-  
-  CGSize naturalSize;
-
-  naturalSize = videoAssetTrack.naturalSize;
-  
-  float renderWidth, renderHeight;
-  renderWidth = naturalSize.width;
-  renderHeight = naturalSize.height;
-  mainCompositionInst.renderSize = CGSizeMake(renderWidth, renderHeight);
-  mainCompositionInst.instructions = [NSArray arrayWithObject:mainInstruction];
-  mainCompositionInst.frameDuration = CMTimeMake(1, 30);
-  
-  
-  [self applyVideoEffectsToComposition:mainCompositionInst size:naturalSize duration:CMTimeGetSeconds(self.videoAsset.duration)];
-  
-  // 4 - Get path
-  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-  NSString *documentsDirectory = [paths objectAtIndex:0];
-  NSString *myPathDocs =  [documentsDirectory stringByAppendingPathComponent:
-                           [NSString stringWithFormat:@"FinalVideo-%d.mov",arc4random() % 1000]];
-  NSURL *url = [NSURL fileURLWithPath:myPathDocs];
-  
-  // 5 - Create exporter
-  AVAssetExportSession *exporter = [[AVAssetExportSession alloc] initWithAsset:mixComposition
-                                                                    presetName:AVAssetExportPresetHighestQuality];
-  exporter.outputURL=url;
-  exporter.outputFileType = AVFileTypeQuickTimeMovie;
-  exporter.shouldOptimizeForNetworkUse = NO;
-  exporter.videoComposition = mainCompositionInst;
-  [exporter exportAsynchronouslyWithCompletionHandler:^{
-    dispatch_async(dispatch_get_main_queue(), ^{
-      [self exportDidFinish:exporter];
-    });
-  }];
-}
-*/
 - (void)exportDidFinish:(AVAssetExportSession*)session {
   if (session.status == AVAssetExportSessionStatusCompleted) {
     NSURL *outputURL = session.outputURL;
@@ -190,156 +119,10 @@
   }
 }
 
-- (void)applyVideoEffectsToComposition:(AVMutableVideoComposition *)composition size:(CGSize)size duration:(Float64) duration
-{
-  // 1
-  UIImage *animationImage = [UIImage imageNamed:@"obama2.png"];
-  CALayer *overlayLayer1 = [CALayer layer];
-  overlayLayer1.anchorPoint = CGPointMake(0.0, 1.0);
-  [overlayLayer1 setContents:(id)[animationImage CGImage]];
-  overlayLayer1.frame = CGRectMake((size.width - animationImage.size.width)/2, (size.height - animationImage.size.height)/2, animationImage.size.width, animationImage.size.height);
-  [overlayLayer1 setMasksToBounds:YES];
-  
-  NSString *animationCSVPath = [[NSBundle mainBundle] pathForResource:@"animation" ofType:@"csv"];
-  
-  CHCSVParser *parser = [[CHCSVParser alloc] initWithContentsOfCSVFile:animationCSVPath];
-  parser.delegate = self;
-  [parser parse];
-  
-  NSUInteger framesCount = [self.animationValues count];
-  NSMutableArray *positionValues = [[NSMutableArray alloc] initWithCapacity:framesCount];
-  NSMutableArray *positionTimes = [[NSMutableArray alloc] initWithCapacity:framesCount];
-  NSMutableArray *rotationValues = [[NSMutableArray alloc] initWithCapacity:framesCount];
-  NSMutableArray *scaleXValues = [[NSMutableArray alloc] initWithCapacity:framesCount];
-  NSMutableArray *scaleYValues = [[NSMutableArray alloc] initWithCapacity:framesCount];
-  NSMutableArray *opacityValues = [[NSMutableArray alloc] init];
-  NSMutableArray *opacityTimes = [[NSMutableArray alloc] init];
-  
-  
-  NSUInteger prevFrame = -1;
-  BOOL firstFrame = YES;
-  
-  double time;
-  
-  for (NSArray *frame in self.animationValues) {
-    NSUInteger frameNumber = [[frame objectAtIndex:0] integerValue];
-
-    if (firstFrame) {
-      if (frameNumber == 0) {
-        [opacityValues addObject:@1.0];
-        [opacityTimes addObject:@0.0];
-      } else {
-        [positionTimes addObject:@0.0];
-        [scaleXValues addObject:@1.0];
-        [scaleYValues addObject:@1.0];
-        [rotationValues addObject:@0.0];
-        [positionValues addObject:[NSValue valueWithCGPoint:CGPointMake(0.0, 0.0)]];
-      }
-    }
-    
-
-    if (prevFrame + 1 != frameNumber) {
-      time = ((double)(prevFrame + 1)) / (double)self.totalFrames;
-      [opacityTimes addObject:[[NSNumber alloc] initWithDouble:time]];
-      [opacityValues addObject:@0.0];
-      time = ((double) frameNumber) / (double) self.totalFrames;
-      [opacityTimes addObject:[[NSNumber alloc] initWithDouble:time]];
-      [opacityValues addObject:@1.0];
-    }
-
-    NSNumber *x = [frame objectAtIndex:1];
-    NSNumber *y = [[NSNumber alloc] initWithFloat:size.height - [[frame objectAtIndex:2] floatValue]];
-    CGFloat rot = [[frame objectAtIndex:5] floatValue];
-    
-    [rotationValues addObject:[[NSNumber alloc] initWithFloat: (-1.0*rot / 180.0)*M_PI + M_PI/2.0]] ;
-    [scaleXValues addObject:[frame objectAtIndex:3]];
-    [scaleYValues addObject:[frame objectAtIndex:4]];
-
-    [positionValues addObject:[NSValue valueWithCGPoint:CGPointMake([x floatValue], [y floatValue])]];
-    time = (double)frameNumber/(double)self.totalFrames;
-
-    [positionTimes addObject:[[NSNumber alloc] initWithDouble:time]];
-    
-    firstFrame = NO;
-    prevFrame = frameNumber;
-  }
-  
-  time = ((double)(prevFrame + 1)) / (double)self.totalFrames;
-  [opacityValues addObject:@0.0];
-  [opacityTimes addObject:[[NSNumber alloc] initWithDouble:time]];
-  
-  [positionTimes addObject:@1.0];
-  [scaleXValues addObject:[scaleXValues lastObject]];
-  [scaleYValues addObject:[scaleYValues lastObject]];
-  [rotationValues  addObject:[rotationValues lastObject]];
-  [positionValues addObject:[positionValues lastObject]];
-  [opacityValues addObject:[opacityValues lastObject]];
-  [opacityTimes addObject:@1.0];
-  
-  CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-  positionAnimation.duration = (CFTimeInterval)duration;
-  positionAnimation.values = [positionValues copy];
-  positionAnimation.beginTime = AVCoreAnimationBeginTimeAtZero;
-  positionAnimation.calculationMode = kCAAnimationDiscrete;
-  positionAnimation.removedOnCompletion = NO;
-  positionAnimation.keyTimes = [positionTimes copy];
-  [overlayLayer1 addAnimation:positionAnimation forKey:@"position"];
-  
-  CAKeyframeAnimation *rotationAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation"];
-  rotationAnimation.duration = (CFTimeInterval) duration;
-  rotationAnimation.values = [rotationValues copy];
-  rotationAnimation.beginTime = AVCoreAnimationBeginTimeAtZero;
-  rotationAnimation.calculationMode = kCAAnimationDiscrete;
-  rotationAnimation.removedOnCompletion = NO;
-  rotationAnimation.keyTimes = [positionTimes copy];
-  [overlayLayer1 addAnimation:rotationAnimation forKey:@"rotation"];
-  
-  
-  CAKeyframeAnimation *scaleXAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale.x"];
-  scaleXAnimation.duration = (CFTimeInterval) duration;
-  scaleXAnimation.values = [scaleXValues copy];
-  scaleXAnimation.beginTime = AVCoreAnimationBeginTimeAtZero;
-  scaleXAnimation.calculationMode = kCAAnimationDiscrete;
-  scaleXAnimation.removedOnCompletion = NO;
-  scaleXAnimation.keyTimes = [positionTimes copy];
-  [overlayLayer1 addAnimation:scaleXAnimation forKey:@"scaleX"];
-
-  CAKeyframeAnimation *scaleYAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale.y"];
-  scaleYAnimation.duration = (CFTimeInterval) duration;
-  scaleYAnimation.values = [scaleYValues copy];
-  scaleYAnimation.beginTime = AVCoreAnimationBeginTimeAtZero;
-  scaleYAnimation.calculationMode = kCAAnimationDiscrete;
-  scaleYAnimation.removedOnCompletion = NO;
-  scaleYAnimation.keyTimes = [positionTimes copy];
-  [overlayLayer1 addAnimation:scaleYAnimation forKey:@"scaleY"];
-  
-  CAKeyframeAnimation *opacityAnimation = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
-  opacityAnimation.duration = (CFTimeInterval) duration;
-  opacityAnimation.values = [opacityValues copy];
-  opacityAnimation.beginTime = AVCoreAnimationBeginTimeAtZero;
-  opacityAnimation.calculationMode = kCAAnimationDiscrete;
-  opacityAnimation.removedOnCompletion = NO;
-  opacityAnimation.keyTimes = [opacityTimes copy];
-  [overlayLayer1 addAnimation:opacityAnimation forKey:@"opacity"];
-
-  // 5
-  CALayer *parentLayer = [CALayer layer];
-  CALayer *videoLayer = [CALayer layer];
-  parentLayer.frame = CGRectMake(0, 0, size.width, size.height);
-  videoLayer.frame = CGRectMake(0, 0, size.width, size.height);
-  [parentLayer addSublayer:videoLayer];
-  [parentLayer addSublayer:overlayLayer1];
-  
-  composition.animationTool = [AVVideoCompositionCoreAnimationTool
-                               videoCompositionCoreAnimationToolWithPostProcessingAsVideoLayer:videoLayer inLayer:parentLayer];
-}
 
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  
-  UIImage *obamaImage = [UIImage imageNamed:@"obama2.png"];
-  self.obamaIamge = [obamaImage CGImage];
 
   NSBundle *bundle = [NSBundle mainBundle];
   NSString *moviePath = [bundle pathForResource:@"bonana" ofType:@"mov"];
@@ -363,6 +146,10 @@
   NSString *myPathDocs =  [documentsDirectory stringByAppendingPathComponent:@"FinalVideo.mov"];
   self.outputURL = [NSURL fileURLWithPath:myPathDocs];
   
+  self.dispatchGroup = dispatch_group_create();
+  
+  dispatch_group_enter(self.dispatchGroup);
+  
   // Asynchronously load the tracks of the asset you want to read.
   [self.asset loadValuesAsynchronouslyForKeys:@[@"tracks"] completionHandler:^{
     // Once the tracks have finished loading, dispatch the work to the main serialization queue.
@@ -384,12 +171,35 @@
       }
       if (success)
         success = [self setupAssetReaderAndAssetWriter:&localError];
-      if (success)
-        success = [self startAssetReaderAndWriter:&localError];
-      if (!success)
+      if (!success) {
+        self.cancelled = YES;
         [self readingAndWritingDidFinishSuccessfully:success withError:localError];
+      }
+      NSLog(@"DONE setup");
+      dispatch_group_leave(self.dispatchGroup);
     });
   }];
+  
+  dispatch_group_enter(self.dispatchGroup);
+  
+  NSString *animationCSVPath = [[NSBundle mainBundle] pathForResource:@"animation" ofType:@"csv"];
+  
+  CHCSVParser *parser = [[CHCSVParser alloc] initWithContentsOfCSVFile:animationCSVPath];
+  parser.delegate = self;
+  [parser parse];
+  
+  dispatch_group_notify(self.dispatchGroup, self.mainSerializationQueue, ^{
+    if(!self.cancelled) {
+      BOOL success = YES;
+      NSError *localError;
+      NSLog(@"START");
+      success = [self startAssetReaderAndWriter:&localError];
+      if (!success ) {
+        [self readingAndWritingDidFinishSuccessfully:success withError:localError];
+      }
+    }
+  });
+  
 }
 
 - (BOOL)setupAssetReaderAndAssetWriter:(NSError **)outError
@@ -542,6 +352,7 @@
     self.audioFinished = NO;
     self.videoFinished = NO;
     
+    
     if (self.assetWriterAudioInput)
     {
       // If there is audio to reencode, enter the dispatch group before beginning the work.
@@ -602,16 +413,19 @@
           CMSampleBufferRef sampleBuffer = [self.assetReaderVideoOutput copyNextSampleBuffer];
           if (sampleBuffer != NULL)
           {
-            self.frameCounter += 1;
+
             CMTime presentationTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
-            CVPixelBufferRef modifiedBuffer = [self process:sampleBuffer];
+            CVPixelBufferRef modifiedBuffer = [self processFrame:self.frameCounter withSampleBuffer:sampleBuffer];
+            self.frameCounter += 1;
             
-            NSLog(@"Presentation Time: %lld/%d", presentationTime.value, presentationTime.timescale);
             //BOOL success = [self.assetWriterVideoInput appendSampleBuffer:sampleBuffer];
             BOOL success = [self.assetWriterAdaptor appendPixelBuffer:modifiedBuffer withPresentationTime:presentationTime];
             CFRelease(sampleBuffer);
             sampleBuffer = NULL;
             completedOrFailed = !success;
+              dispatch_async(dispatch_get_main_queue(), ^{
+                  [self.progressView setProgress:(float)self.frameCounter/485.0];
+              });
           }
           else
           {
@@ -689,22 +503,13 @@
     self.audioFinished = NO;
     dispatch_async(dispatch_get_main_queue(), ^{
       NSLog(@"SUCCESS");
-      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Video Saved" message:@"Saved To Photo Album"
-                                                     delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-      [alert show];
+      [self playMovie];
     });
   }
 }
 
-- (CMSampleBufferRef) modifySampleBuffer:(CMSampleBufferRef)sampleBuffer
-{
-//  UIImage *image = [self sampleBufferToImage:sampleBuffer];
-//  image = [self modifyImage: image];
-//  sampleBuffer = [self imageToSampleBuffer:image];
-  return sampleBuffer;
-}
 
-- (CVPixelBufferRef) process:(CMSampleBufferRef) sampleBuffer
+- (CVPixelBufferRef) processFrame:(NSUInteger)frame withSampleBuffer:(CMSampleBufferRef) sampleBuffer
 {
   CVPixelBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
   // Lock the base address of the pixel buffer.
@@ -715,8 +520,6 @@
   // Get the pixel buffer width and height.
   size_t width = CVPixelBufferGetWidth(imageBuffer);
   size_t height = CVPixelBufferGetHeight(imageBuffer);
-  
-  NSLog(@"H: %zd, W: %zd, BPR: %zd", height, width, bytesPerRow);
   
   // Create a device-dependent RGB color space.
   static CGColorSpaceRef colorSpace = NULL;
@@ -730,66 +533,18 @@
   
   // Get the base address of the pixel buffer.
   void *baseAddress = CVPixelBufferGetBaseAddress(imageBuffer);
-  // Get the data size for contiguous planes of the pixel buffer.
-  size_t bufferSize = CVPixelBufferGetDataSize(imageBuffer);
-  
-  // Create a Quartz direct-access data provider that uses data we supply.
-  CGDataProviderRef dataProvider =
-  CGDataProviderCreateWithData(NULL, baseAddress, bufferSize, NULL);
-  // Create a bitmap image from data supplied by the data provider.
-  CGImageRef cgImage =
-  CGImageCreate(width, height, 8, 32, bytesPerRow,
-                colorSpace, kCGImageAlphaNoneSkipLast | kCGBitmapByteOrder32Little,
-                dataProvider, NULL, true, kCGRenderingIntentDefault);
-
-  
-  
-  
-  
-  NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
-                           [NSNumber numberWithBool:YES], kCVPixelBufferCGImageCompatibilityKey,
-                           [NSNumber numberWithBool:YES], kCVPixelBufferCGBitmapContextCompatibilityKey,
-                           nil];
-  CVPixelBufferRef outBuffer = NULL;
-  
-  CVReturn status = CVPixelBufferCreate(kCFAllocatorDefault, width,
-                                        height, kCVPixelFormatType_32BGRA, (__bridge CFDictionaryRef) options,
-                                        &outBuffer);
-  NSParameterAssert(status == kCVReturnSuccess && outBuffer != NULL);
-  
-  CVPixelBufferLockBaseAddress(outBuffer, 0);
-  void *pxdata = CVPixelBufferGetBaseAddress(outBuffer);
-  NSParameterAssert(pxdata != NULL);
-  
-  CGContextRef context = CGBitmapContextCreate(pxdata, width,
-                                               height, 8, 4*width, colorSpace,
-                                               kCGImageAlphaNoneSkipLast);
+  CGContextRef context = CGBitmapContextCreate(baseAddress, width,
+                                               height, 8, bytesPerRow, colorSpace,
+                                               kCGImageAlphaNoneSkipFirst);
   NSParameterAssert(context);
-  CGContextDrawImage(context, CGRectMake(0.0, 0.0, width, height), cgImage);
-  CGContextDrawImage(context, CGRectMake(100.0, 100.0, CGImageGetWidth(self.obamaIamge), CGImageGetHeight(self.obamaIamge)), self.obamaIamge);
-
-  CGColorSpaceRelease(colorSpace);
+  
+  [self drawFrame: (NSUInteger)frame withContext:(CGContextRef)context];
+  
   CGContextRelease(context);
-  
-  CVPixelBufferUnlockBaseAddress(outBuffer, 0);
-  
-  CGImageRelease(cgImage);
-  CGDataProviderRelease(dataProvider);
   
   CVPixelBufferUnlockBaseAddress(imageBuffer, 0);
   
-  return outBuffer;
-}
-
-- (UIImage *) modifyImage:(UIImage *)image
-{
-  return image;
-}
-
-- (CMSampleBufferRef) imageToSampleBuffer:(UIImage *)image
-{
-  CMSampleBufferRef r = NULL;
-  return r;
+  return imageBuffer;
 }
 
 - (void)cancel
@@ -850,7 +605,67 @@
 }
 - (void)viewDidUnload {
     [self setBack_button:nil];
-    [self setFace:nil];
+  [self setFaceImage:nil];
     [super viewDidUnload];
 }
+
+-(void) playMovie {
+  
+    self.player = [[MPMoviePlayerController alloc] initWithContentURL: self.outputURL];
+    [self.player prepareToPlay];
+    [self.player.view setFrame: self.view.bounds];  // player's frame must match parent's
+    [self.view addSubview: self.player.view];
+    
+    self.player.controlStyle = MPMovieControlStyleNone;
+    
+    [self.player play];
+  
+  // Register for the playback finished notification
+  [[NSNotificationCenter defaultCenter] addObserver: self
+                                           selector: @selector(movieFinishedCallback:)
+                                               name: MPMoviePlayerPlaybackDidFinishNotification
+                                             object: self.player];
+  
+}
+
+// When the movie is done, release the controller.
+-(void) movieFinishedCallback: (NSNotification*) aNotification
+{
+  [[NSNotificationCenter defaultCenter]
+   removeObserver: self
+   name: MPMoviePlayerPlaybackDidFinishNotification
+   object: self.player];
+  
+  [self.player.view removeFromSuperview];
+  self.player = nil;
+}
+
+- (void) drawFrame:(NSUInteger)frame withContext:(CGContextRef)context
+{
+  CGContextRetain(context);
+  NSArray *values = [self.animationValues objectForKey:[NSNumber numberWithUnsignedInteger:frame]];
+
+  if (values) {
+    NSLog(@"%d", frame);
+    
+    size_t imgWidth = CGImageGetWidth(self.faceImage);
+    size_t imgHeight = CGImageGetHeight(self.faceImage);
+    
+    CGContextTranslateCTM(context, 0.0, (CGFloat)CGBitmapContextGetHeight(context));
+    CGContextScaleCTM(context, 1.0, -1.0);
+
+    CGContextConcatCTM(context, CGAffineTransformMake([values[0] floatValue], [values[1] floatValue], [values[2] floatValue], [values[3] floatValue], [values[4] floatValue], [values[5] floatValue]));
+    CGContextScaleCTM(context, 1.0, -1.0);
+
+    CGFloat scale = MIN(100.0/(CGFloat)imgWidth, 140.0/(CGFloat)imgHeight);
+    CGContextScaleCTM(context, scale, scale);
+    CGContextTranslateCTM(context, (CGFloat)imgWidth / -2.0, (CGFloat)imgHeight / -2.0);
+    CGContextDrawImage(context, CGRectMake(0.0, 0.0, imgWidth, imgHeight), self.faceImage);
+  } else {
+    NSLog(@"-");
+  }
+  CGContextRelease(context);
+  //self.animationValues
+}
+
 @end

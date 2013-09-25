@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="dEq-Rj-lVJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="myB-TD-72E">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+        <deployment defaultVersion="1280" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -120,6 +121,7 @@
                         <outlet property="scrollview" destination="lpU-MG-eYs" id="7Bn-bx-fWr"/>
                         <outlet property="start_button" destination="Vlm-KA-Icv" id="Zz7-ky-Z8z"/>
                         <outlet property="title" destination="xFG-0u-XMh" id="BYv-aB-kZl"/>
+                        <outlet property="titleImage" destination="xFG-0u-XMh" id="fYi-14-ik5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="maX-gz-feh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -190,13 +192,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="TopLeft" image="Menu_BackGround.png" id="Dyj-1D-awd">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
+                            <imageView autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" image="Menu_BackGround.png" id="P5A-eu-pjv">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <imageView autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" image="Menu_BackGround.png" id="P5A-eu-pjv">
-                                <rect key="frame" x="0.0" y="-100" width="320" height="480"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="OGv-sN-2rN">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" id="Ip4-2V-A3d">
                                 <rect key="frame" x="0.0" y="372" width="320" height="108"/>
@@ -321,7 +323,7 @@
                         <outlet property="start_button" destination="b5V-ep-e7a" id="KsR-Ua-a9m"/>
                         <outlet property="topButton" destination="U7t-4u-Jeq" id="sjv-t2-XpL"/>
                         <outlet property="user_image_zoom" destination="P5A-eu-pjv" id="MC6-8I-Dlp"/>
-                        <outlet property="user_photo" destination="Dyj-1D-awd" id="r8C-0s-UtK"/>
+                        <outlet property="user_photo" destination="OGv-sN-2rN" id="TW4-ef-894"/>
                         <outlet property="zoomBorder" destination="fLT-SX-8JM" id="XtG-K7-zky"/>
                     </connections>
                 </viewController>
@@ -352,17 +354,17 @@
                                     <action selector="back_click:" destination="dEq-Rj-lVJ" eventType="touchDown" id="HYx-gP-HDs"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="mVo-gd-dtM">
-                                <rect key="frame" x="40" y="176" width="240" height="128"/>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" id="HiB-o9-rEE">
+                                <rect key="frame" x="85" y="239" width="150" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="pXY-RG-OxY"/>
                     <connections>
                         <outlet property="back_button" destination="Oxi-Ns-LfO" id="A1c-nN-jtF"/>
-                        <outlet property="face" destination="mVo-gd-dtM" id="43o-Nj-ygf"/>
+                        <outlet property="progressView" destination="HiB-o9-rEE" id="tl5-uM-4IO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UAp-cO-goQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -389,55 +391,6 @@
         <image name="banana1.png" width="378" height="564"/>
         <image name="name_Nakedbanana.png" width="262" height="116"/>
     </resources>
-    <classes>
-        <class className="EditorController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditorController.h"/>
-            <relationships>
-                <relationship kind="action" name="back_click:"/>
-                <relationship kind="action" name="tuneButtonMoved:forEvent:"/>
-                <relationship kind="action" name="tuneButtonTouch:forEvent:"/>
-                <relationship kind="action" name="tuneButtonTouchEnd:"/>
-                <relationship kind="outlet" name="bottomButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="leftButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="rightButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="start_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="topButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="user_image_zoom" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="user_photo" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="zoomBorder" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="MainController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainController.h"/>
-            <relationships>
-                <relationship kind="action" name="left_touch:"/>
-                <relationship kind="action" name="right_touch:"/>
-                <relationship kind="outlet" name="footer" candidateClass="UIView"/>
-                <relationship kind="outlet" name="left_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="right_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="scrollview" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="start_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="title" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="PlayerController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlayerController.h"/>
-            <relationships>
-                <relationship kind="action" name="back_click:"/>
-                <relationship kind="outlet" name="back_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="face" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="SourceChooseController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SourceChooseController.h"/>
-            <relationships>
-                <relationship kind="action" name="camera_button_click:"/>
-                <relationship kind="action" name="gallery_button_click:"/>
-                <relationship kind="outlet" name="camera_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="gallery_button" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

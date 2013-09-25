@@ -7,18 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "mediaplayer/MPMoviePlayerController.h"
+#import <MediaPlayer/MPMoviePlayerController.h>
 #import "CHCSVParser.h"
 
 
 @interface PlayerController : UIViewController <CHCSVParserDelegate>
 - (IBAction)back_click:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIImageView *faceImageView;
 @property (weak, nonatomic) IBOutlet UIButton *back_button;
-
-@property (weak, nonatomic) IBOutlet UIImageView *face;
-@property (weak, nonatomic) UIImage *face_image;
-@property (nonatomic) CGRect face_rect;
-
-@property (strong, nonatomic) MPMoviePlayerController *player;
+@property (nonatomic) CGImageRef faceImage;
 
 @end

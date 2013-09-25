@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7108A8CC162F226100A4F174 /* Result_face_mask_vertical.png in Resources */ = {isa = PBXBuildFile; fileRef = 7108A8CB162F226100A4F174 /* Result_face_mask_vertical.png */; };
-		7108A8DE162F2FB600A4F174 /* Naked_banana_dance1.mov in Resources */ = {isa = PBXBuildFile; fileRef = 7108A8DD162F2FB600A4F174 /* Naked_banana_dance1.mov */; };
 		7122514A15D571E60036C13B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7122514915D571E60036C13B /* QuartzCore.framework */; };
 		7162B8B315B8674F00D79546 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7162B8B215B8674F00D79546 /* UIKit.framework */; };
 		7162B8B515B8674F00D79546 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7162B8B415B8674F00D79546 /* Foundation.framework */; };
@@ -40,9 +39,6 @@
 		716E289415B89CE200E636AE /* name_Nakedbanana.png in Resources */ = {isa = PBXBuildFile; fileRef = 716E289115B89CE200E636AE /* name_Nakedbanana.png */; };
 		716E289515B89CE200E636AE /* name_Sailorbanana.png in Resources */ = {isa = PBXBuildFile; fileRef = 716E289215B89CE200E636AE /* name_Sailorbanana.png */; };
 		716E289615B89CE200E636AE /* name_Meatbanana.png in Resources */ = {isa = PBXBuildFile; fileRef = 716E289315B89CE200E636AE /* name_Meatbanana.png */; };
-		7179E2D315D1A30300B5D1CB /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 7179E2CE15D1A30300B5D1CB /* UIImage+Alpha.m */; };
-		7179E2D415D1A30300B5D1CB /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 7179E2D015D1A30300B5D1CB /* UIImage+Resize.m */; };
-		7179E2D515D1A30300B5D1CB /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 7179E2D215D1A30300B5D1CB /* UIImage+RoundedCorner.m */; };
 		7189B35015CC4B01004E09CB /* Gallery_background_innershadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7189B34B15CC4B01004E09CB /* Gallery_background_innershadow.png */; };
 		7189B35115CC4B01004E09CB /* Gallery_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 7189B34C15CC4B01004E09CB /* Gallery_background.png */; };
 		7189B35215CC4B01004E09CB /* Gallery_bottom_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 7189B34D15CC4B01004E09CB /* Gallery_bottom_circle.png */; };
@@ -74,21 +70,25 @@
 		71D70A1715D196510059E763 /* Tune_right_ear.png in Resources */ = {isa = PBXBuildFile; fileRef = 71D70A1415D196510059E763 /* Tune_right_ear.png */; };
 		71D70A1815D196510059E763 /* Tune_left_ear.png in Resources */ = {isa = PBXBuildFile; fileRef = 71D70A1515D196510059E763 /* Tune_left_ear.png */; };
 		71D70A1B15D199730059E763 /* Result_face_mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 71D70A1A15D199730059E763 /* Result_face_mask.png */; };
-		F726D7FB17DE2CE200FBBB07 /* obama2.png in Resources */ = {isa = PBXBuildFile; fileRef = F726D7FA17DE2CE200FBBB07 /* obama2.png */; };
-		F726D80317DE377400FBBB07 /* obama-test-4.mov in Resources */ = {isa = PBXBuildFile; fileRef = F726D80217DE377400FBBB07 /* obama-test-4.mov */; };
 		F726D80517DE3AC100FBBB07 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F726D80417DE3AC000FBBB07 /* AVFoundation.framework */; };
 		F726D80717DE3ACB00FBBB07 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F726D80617DE3ACB00FBBB07 /* AssetsLibrary.framework */; };
 		F726D80917DE3B4700FBBB07 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F726D80817DE3B4700FBBB07 /* CoreMedia.framework */; };
 		F726D81017DE599400FBBB07 /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F726D80F17DE599400FBBB07 /* CHCSVParser.m */; };
 		F726D81217DE88A000FBBB07 /* animation.csv in Resources */ = {isa = PBXBuildFile; fileRef = F726D81117DE88A000FBBB07 /* animation.csv */; };
 		F726D81417DF97EC00FBBB07 /* bonana.mov in Resources */ = {isa = PBXBuildFile; fileRef = F726D81317DF97EC00FBBB07 /* bonana.mov */; };
+		F72AE1E717F0D31800D08B44 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F72AE1E617F0D31800D08B44 /* Default-568h@2x.png */; };
 		F759FCF117E7111000663F76 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F759FCF017E7111000663F76 /* CoreVideo.framework */; };
-		F759FCF317E7154900663F76 /* Animation_Naked_Banana_v4.mov in Resources */ = {isa = PBXBuildFile; fileRef = F759FCF217E7154900663F76 /* Animation_Naked_Banana_v4.mov */; };
+		F7A9C24617F2295800F608F5 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A9C24117F2295800F608F5 /* UIImage+Alpha.m */; };
+		F7A9C24717F2295800F608F5 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A9C24317F2295800F608F5 /* UIImage+Resize.m */; };
+		F7A9C24817F2295800F608F5 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A9C24517F2295800F608F5 /* UIImage+RoundedCorner.m */; };
+		F7A9C26417F2396B00F608F5 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A9C25E17F2396B00F608F5 /* libTestFlight.a */; };
+		F7A9C26517F2396B00F608F5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F7A9C25F17F2396B00F608F5 /* README.md */; };
+		F7A9C26617F2396B00F608F5 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = F7A9C26017F2396B00F608F5 /* release_notes.md */; };
+		F7A9C26817F239DA00F608F5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A9C26717F239DA00F608F5 /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7108A8CB162F226100A4F174 /* Result_face_mask_vertical.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Result_face_mask_vertical.png; sourceTree = "<group>"; };
-		7108A8DD162F2FB600A4F174 /* Naked_banana_dance1.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Naked_banana_dance1.mov; sourceTree = "<group>"; };
 		7122514915D571E60036C13B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		7162B8AE15B8674F00D79546 /* Banana Booth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Banana Booth.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7162B8B215B8674F00D79546 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -125,12 +125,6 @@
 		716E289115B89CE200E636AE /* name_Nakedbanana.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = name_Nakedbanana.png; sourceTree = "<group>"; };
 		716E289215B89CE200E636AE /* name_Sailorbanana.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = name_Sailorbanana.png; sourceTree = "<group>"; };
 		716E289315B89CE200E636AE /* name_Meatbanana.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = name_Meatbanana.png; sourceTree = "<group>"; };
-		7179E2CD15D1A30300B5D1CB /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
-		7179E2CE15D1A30300B5D1CB /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
-		7179E2CF15D1A30300B5D1CB /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
-		7179E2D015D1A30300B5D1CB /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
-		7179E2D115D1A30300B5D1CB /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
-		7179E2D215D1A30300B5D1CB /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
 		7189B34B15CC4B01004E09CB /* Gallery_background_innershadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gallery_background_innershadow.png; sourceTree = "<group>"; };
 		7189B34C15CC4B01004E09CB /* Gallery_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gallery_background.png; sourceTree = "<group>"; };
 		7189B34D15CC4B01004E09CB /* Gallery_bottom_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gallery_bottom_circle.png; sourceTree = "<group>"; };
@@ -165,8 +159,6 @@
 		71D70A1415D196510059E763 /* Tune_right_ear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tune_right_ear.png; sourceTree = "<group>"; };
 		71D70A1515D196510059E763 /* Tune_left_ear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tune_left_ear.png; sourceTree = "<group>"; };
 		71D70A1A15D199730059E763 /* Result_face_mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Result_face_mask.png; sourceTree = "<group>"; };
-		F726D7FA17DE2CE200FBBB07 /* obama2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = obama2.png; sourceTree = "<group>"; };
-		F726D80217DE377400FBBB07 /* obama-test-4.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "obama-test-4.mov"; sourceTree = "<group>"; };
 		F726D80417DE3AC000FBBB07 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F726D80617DE3ACB00FBBB07 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		F726D80817DE3B4700FBBB07 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -174,8 +166,21 @@
 		F726D80F17DE599400FBBB07 /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHCSVParser.m; sourceTree = "<group>"; };
 		F726D81117DE88A000FBBB07 /* animation.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = animation.csv; sourceTree = "<group>"; };
 		F726D81317DF97EC00FBBB07 /* bonana.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = bonana.mov; sourceTree = "<group>"; };
+		F72AE1E617F0D31800D08B44 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F759FCF017E7111000663F76 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
-		F759FCF217E7154900663F76 /* Animation_Naked_Banana_v4.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Animation_Naked_Banana_v4.mov; sourceTree = "<group>"; };
+		F7A9C24017F2295800F608F5 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
+		F7A9C24117F2295800F608F5 /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
+		F7A9C24217F2295800F608F5 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		F7A9C24317F2295800F608F5 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		F7A9C24417F2295800F608F5 /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
+		F7A9C24517F2295800F608F5 /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
+		F7A9C25E17F2396B00F608F5 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		F7A9C25F17F2396B00F608F5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		F7A9C26017F2396B00F608F5 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
+		F7A9C26117F2396B00F608F5 /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
+		F7A9C26217F2396B00F608F5 /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
+		F7A9C26317F2396B00F608F5 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		F7A9C26717F239DA00F608F5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,9 +188,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7A9C26817F239DA00F608F5 /* libz.dylib in Frameworks */,
 				F759FCF117E7111000663F76 /* CoreVideo.framework in Frameworks */,
 				F726D80917DE3B4700FBBB07 /* CoreMedia.framework in Frameworks */,
 				F726D80717DE3ACB00FBBB07 /* AssetsLibrary.framework in Frameworks */,
+				F7A9C26417F2396B00F608F5 /* libTestFlight.a in Frameworks */,
 				F726D80517DE3AC100FBBB07 /* AVFoundation.framework in Frameworks */,
 				71BD50DF1608EB0700A4838E /* CoreImage.framework in Frameworks */,
 				7122514A15D571E60036C13B /* QuartzCore.framework in Frameworks */,
@@ -203,12 +210,7 @@
 		7162B8A315B8674F00D79546 = {
 			isa = PBXGroup;
 			children = (
-				F759FCF017E7111000663F76 /* CoreVideo.framework */,
-				F726D80817DE3B4700FBBB07 /* CoreMedia.framework */,
-				F726D80617DE3ACB00FBBB07 /* AssetsLibrary.framework */,
-				F726D80417DE3AC000FBBB07 /* AVFoundation.framework */,
-				71BD50DE1608EB0700A4838E /* CoreImage.framework */,
-				7122514915D571E60036C13B /* QuartzCore.framework */,
+				F72AE1E617F0D31800D08B44 /* Default-568h@2x.png */,
 				7162B8F515B8727300D79546 /* Images */,
 				7162B8B815B8674F00D79546 /* Banana Booth */,
 				7162B8B115B8674F00D79546 /* Frameworks */,
@@ -227,6 +229,13 @@
 		7162B8B115B8674F00D79546 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F7A9C26717F239DA00F608F5 /* libz.dylib */,
+				F759FCF017E7111000663F76 /* CoreVideo.framework */,
+				F726D80817DE3B4700FBBB07 /* CoreMedia.framework */,
+				F726D80617DE3ACB00FBBB07 /* AssetsLibrary.framework */,
+				F726D80417DE3AC000FBBB07 /* AVFoundation.framework */,
+				71BD50DE1608EB0700A4838E /* CoreImage.framework */,
+				7122514915D571E60036C13B /* QuartzCore.framework */,
 				71CD545715BF2DD100736F65 /* MediaPlayer.framework */,
 				71CD544115BF151900736F65 /* MobileCoreServices.framework */,
 				7162B8B215B8674F00D79546 /* UIKit.framework */,
@@ -239,8 +248,8 @@
 		7162B8B815B8674F00D79546 /* Banana Booth */ = {
 			isa = PBXGroup;
 			children = (
+				F7A9C23F17F2295800F608F5 /* UIImage-categories */,
 				F726D80A17DE58B400FBBB07 /* Lib */,
-				7179E2CC15D1A30300B5D1CB /* UIImage-categories */,
 				7162B8C115B8674F00D79546 /* AppDelegate.h */,
 				7162B8C215B8674F00D79546 /* AppDelegate.m */,
 				7162B93715B87E8800D79546 /* MainController.h */,
@@ -272,10 +281,7 @@
 		7162B8F515B8727300D79546 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				F759FCF217E7154900663F76 /* Animation_Naked_Banana_v4.mov */,
 				F726D81317DF97EC00FBBB07 /* bonana.mov */,
-				F726D80217DE377400FBBB07 /* obama-test-4.mov */,
-				F726D7FA17DE2CE200FBBB07 /* obama2.png */,
 				7108A8CB162F226100A4F174 /* Result_face_mask_vertical.png */,
 				7162B92515B87B8500D79546 /* banana1.png */,
 				7162B8DC15B8725F00D79546 /* banana2.png */,
@@ -319,7 +325,6 @@
 				71CD544B15BF298C00736F65 /* Button_Back_up.png */,
 				71CD544E15BF2C8B00736F65 /* Tune_chin.png */,
 				71CD544F15BF2C8B00736F65 /* Tune_eye.png */,
-				7108A8DD162F2FB600A4F174 /* Naked_banana_dance1.mov */,
 				71CD545015BF2C8B00736F65 /* Tune_mouth.png */,
 				7162B8CF15B867E000D79546 /* 114.png */,
 				7162B8CD15B867DB00D79546 /* 57.png */,
@@ -329,26 +334,40 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
-		7179E2CC15D1A30300B5D1CB /* UIImage-categories */ = {
-			isa = PBXGroup;
-			children = (
-				7179E2CD15D1A30300B5D1CB /* UIImage+Alpha.h */,
-				7179E2CE15D1A30300B5D1CB /* UIImage+Alpha.m */,
-				7179E2CF15D1A30300B5D1CB /* UIImage+Resize.h */,
-				7179E2D015D1A30300B5D1CB /* UIImage+Resize.m */,
-				7179E2D115D1A30300B5D1CB /* UIImage+RoundedCorner.h */,
-				7179E2D215D1A30300B5D1CB /* UIImage+RoundedCorner.m */,
-			);
-			path = "UIImage-categories";
-			sourceTree = "<group>";
-		};
 		F726D80A17DE58B400FBBB07 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				F7A9C25D17F2396B00F608F5 /* TestFlightSDK2 */,
 				F726D80E17DE597D00FBBB07 /* CHCSVParser.h */,
 				F726D80F17DE599400FBBB07 /* CHCSVParser.m */,
 			);
 			name = Lib;
+			sourceTree = "<group>";
+		};
+		F7A9C23F17F2295800F608F5 /* UIImage-categories */ = {
+			isa = PBXGroup;
+			children = (
+				F7A9C24017F2295800F608F5 /* UIImage+Alpha.h */,
+				F7A9C24117F2295800F608F5 /* UIImage+Alpha.m */,
+				F7A9C24217F2295800F608F5 /* UIImage+Resize.h */,
+				F7A9C24317F2295800F608F5 /* UIImage+Resize.m */,
+				F7A9C24417F2295800F608F5 /* UIImage+RoundedCorner.h */,
+				F7A9C24517F2295800F608F5 /* UIImage+RoundedCorner.m */,
+			);
+			path = "UIImage-categories";
+			sourceTree = "<group>";
+		};
+		F7A9C25D17F2396B00F608F5 /* TestFlightSDK2 */ = {
+			isa = PBXGroup;
+			children = (
+				F7A9C25E17F2396B00F608F5 /* libTestFlight.a */,
+				F7A9C25F17F2396B00F608F5 /* README.md */,
+				F7A9C26017F2396B00F608F5 /* release_notes.md */,
+				F7A9C26117F2396B00F608F5 /* TestFlight+AsyncLogging.h */,
+				F7A9C26217F2396B00F608F5 /* TestFlight+ManualSessions.h */,
+				F7A9C26317F2396B00F608F5 /* TestFlight.h */,
+			);
+			path = TestFlightSDK2;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -406,6 +425,7 @@
 				7162B8CA15B8677F00D79546 /* Default.png in Resources */,
 				7162B8CC15B8678400D79546 /* Default@2x.png in Resources */,
 				7162B8CE15B867DB00D79546 /* 57.png in Resources */,
+				F7A9C26617F2396B00F608F5 /* release_notes.md in Resources */,
 				7162B8D015B867E000D79546 /* 114.png in Resources */,
 				7162B8D215B8681800D79546 /* Storyboard.storyboard in Resources */,
 				7162B8E915B8725F00D79546 /* banana2.png in Resources */,
@@ -444,6 +464,7 @@
 				7189B35215CC4B01004E09CB /* Gallery_bottom_circle.png in Resources */,
 				7189B35315CC4B01004E09CB /* Gallery_circle.png in Resources */,
 				7189B35415CC4B01004E09CB /* Gallery_top_circle.png in Resources */,
+				F7A9C26517F2396B00F608F5 /* README.md in Resources */,
 				71D70A0815D188BE0059E763 /* mask.png in Resources */,
 				71D70A0E15D18D040059E763 /* Tunning_circle_zoom.png in Resources */,
 				71D70A1615D196510059E763 /* Tune_lobuse.png in Resources */,
@@ -451,13 +472,10 @@
 				71D70A1815D196510059E763 /* Tune_left_ear.png in Resources */,
 				71D70A1B15D199730059E763 /* Result_face_mask.png in Resources */,
 				7108A8CC162F226100A4F174 /* Result_face_mask_vertical.png in Resources */,
-				7108A8DE162F2FB600A4F174 /* Naked_banana_dance1.mov in Resources */,
+				F72AE1E717F0D31800D08B44 /* Default-568h@2x.png in Resources */,
 				71BDDF4117D8DF7700E89C41 /* Result_face_mask_vertical.png in Resources */,
-				F726D7FB17DE2CE200FBBB07 /* obama2.png in Resources */,
-				F726D80317DE377400FBBB07 /* obama-test-4.mov in Resources */,
 				F726D81217DE88A000FBBB07 /* animation.csv in Resources */,
 				F726D81417DF97EC00FBBB07 /* bonana.mov in Resources */,
-				F759FCF317E7154900663F76 /* Animation_Naked_Banana_v4.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,11 +490,11 @@
 				7162B8C315B8674F00D79546 /* AppDelegate.m in Sources */,
 				7162B93915B87E8800D79546 /* MainController.m in Sources */,
 				71CD543A15BF10F500736F65 /* SourceChooseController.m in Sources */,
+				F7A9C24617F2295800F608F5 /* UIImage+Alpha.m in Sources */,
+				F7A9C24717F2295800F608F5 /* UIImage+Resize.m in Sources */,
+				F7A9C24817F2295800F608F5 /* UIImage+RoundedCorner.m in Sources */,
 				71CD544915BF17A100736F65 /* EditorController.m in Sources */,
 				71CD545615BF2D9600736F65 /* PlayerController.m in Sources */,
-				7179E2D315D1A30300B5D1CB /* UIImage+Alpha.m in Sources */,
-				7179E2D415D1A30300B5D1CB /* UIImage+Resize.m in Sources */,
-				7179E2D515D1A30300B5D1CB /* UIImage+RoundedCorner.m in Sources */,
 				F726D81017DE599400FBBB07 /* CHCSVParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -547,6 +565,11 @@
 				GCC_PREFIX_HEADER = "Banana Booth/Banana Booth-Prefix.pch";
 				INFOPLIST_FILE = "Banana Booth/Banana Booth-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/pechkin/Downloads/TestFlightSDK2,
+					"/Users/pechkin/Projects/banana-booth/Banana\\ Booth/TestFlightSDK2",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -559,6 +582,11 @@
 				GCC_PREFIX_HEADER = "Banana Booth/Banana Booth-Prefix.pch";
 				INFOPLIST_FILE = "Banana Booth/Banana Booth-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/pechkin/Downloads/TestFlightSDK2,
+					"/Users/pechkin/Projects/banana-booth/Banana\\ Booth/TestFlightSDK2",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

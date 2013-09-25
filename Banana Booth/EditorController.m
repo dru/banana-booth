@@ -139,37 +139,8 @@
     return newImage;
 }
 
-- (UIImage *) imageWithImage:(UIImage *)image imageWithTint:(UIColor *)tintColor {
-    
-    // Begin drawing
-    CGRect aRect = CGRectMake(0.f, 0.f, image.size.width, image.size.height);
-    UIGraphicsBeginImageContext(aRect.size);
-    
-    // Get the graphic context
-    CGContextRef c = UIGraphicsGetCurrentContext();
-    
-    // Draw the image
-    [image drawInRect:aRect];
-    
-    // Set the fill color space
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGContextSetFillColorSpace(c, colorSpace);
-    
-    // Set the fill color
-    CGContextSetFillColorWithColor(c, [tintColor colorWithAlphaComponent:0.5f].CGColor);
-    
-    UIRectFillUsingBlendMode(aRect, kCGBlendModeNormal);
-    
-    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    // Release memory
-    CGColorSpaceRelease(colorSpace);
-    
-    return img;
-}
 
--(UIImage *)makeMask {
+-(CGImageRef)makeMask {
     CGRect image_area = CGRectMake(
             leftButton.center.x,
             topButton.center.y,
@@ -193,18 +164,18 @@
     
     CIFilter *monochrome = [CIFilter filterWithName:@"CIColorMonochrome"];
     
-    [monochrome setDefaults];
+      [monochrome setDefaults];
     [monochrome setValue: outputBrightnessImage forKey:@"inputImage"];
     [monochrome setValue:[CIColor colorWithRed:1.0f green:0.78f blue:0.0f] forKey:@"inputColor"];
     [monochrome setValue:[NSNumber numberWithFloat: 1.0f] forKey:@"inputIntensity"];
     
     outputTintImage = [monochrome valueForKey:@"outputImage"];
-    
+  
     CIContext *context = [CIContext contextWithOptions:nil];
     
     UIImage *mask_image = [UIImage imageNamed:@"Result_face_mask_vertical.png"];
     mask_image =  [self imageWithImage:mask_image scaledToSize:CGSizeMake(image_area.size.width, image_area.size.height)];
-    
+  
     CGImageRef mask_ref = mask_image.CGImage;
     
     CGImageRef mask = CGImageMaskCreate(CGImageGetWidth(mask_ref),
@@ -213,23 +184,18 @@
                                             CGImageGetBitsPerPixel(mask_ref),
                                             CGImageGetBytesPerRow(mask_ref),
                                             CGImageGetDataProvider(mask_ref), NULL, false);
-    
+  
     CGImageRef masked = CGImageCreateWithMask([context createCGImage:outputTintImage fromRect:outputTintImage.extent], mask);
     
-    
-    return [UIImage imageWithCGImage:masked];
-    
+    return masked;
+  
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSLog(@"%@", @"Segues");
-    
     PlayerController *player = [segue destinationViewController];
     
-    player.face_image = [self makeMask];
-    player.face_rect = CGRectMake(leftButton.center.x, topButton.center.y, player.face_image.size.width, player.face_image.size.height);
-    
+    player.faceImage = [self makeMask];
 }
 
 - (IBAction)tuneButtonTouch:(id)sender forEvent:(UIEvent *)event {
