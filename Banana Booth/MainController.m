@@ -20,17 +20,6 @@
 @synthesize left_button;
 @synthesize page;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-
-
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -59,7 +48,7 @@
     
 
     
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"banana2.png"]];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"banana2"]];
     imageView.frame = CGRectMake(320+39, 0, 192, 283);
     
     [scrollview addSubview:imageView];
@@ -75,12 +64,6 @@
 
 
 	// Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MPMoviePlayerController.h>
-#import "CHCSVParser.h"
-
+#import <CHCSVParser/CHCSVParser.h>
 
 @interface PlayerController : UIViewController <CHCSVParserDelegate>
-- (IBAction)back_click:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIImageView *faceImageView;
 @property (weak, nonatomic) IBOutlet UIButton *back_button;
 @property (nonatomic) CGImageRef faceImage;
+
+- (IBAction)back_click:(id)sender;
 
 @end

@@ -7,13 +7,11 @@
 //
 
 #import "AppDelegate.h"
-#import "TestFlight.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [TestFlight takeOff:@"1d819dd5-38d3-4f42-b285-36307b188e8c"];
     [[UIApplication sharedApplication]setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
 
     return YES;

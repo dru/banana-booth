@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3105548C-3151-4C90-978C-D468CE02B49D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Banana Booth</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5F1EEF3D-1C8D-4584-A785-09CBE9DF6C66</key>
+		<string>ssh://github.com/dru/banana-booth.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Banana Booth.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5F1EEF3D-1C8D-4584-A785-09CBE9DF6C66</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/dru/banana-booth.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5F1EEF3D-1C8D-4584-A785-09CBE9DF6C66</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5F1EEF3D-1C8D-4584-A785-09CBE9DF6C66</string>
+			<key>IDESourceControlWCCName</key>
+			<string>banana-booth</string>
+		</dict>
+	</array>
+</dict>
+</plist>
