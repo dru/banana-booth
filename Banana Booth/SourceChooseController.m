@@ -34,8 +34,8 @@
 {
     [super viewDidLoad];
 
-    [gallery_button setImage:[UIImage imageNamed:@"Button_Gallery_down.png"] forState:UIControlStateHighlighted];
-    [camera_button setImage:[UIImage imageNamed:@"Button_Camera_down.png"] forState:UIControlStateHighlighted];
+    [gallery_button setImage:[UIImage imageNamed:@"Button_Gallery_down"] forState:UIControlStateHighlighted];
+    [camera_button setImage:[UIImage imageNamed:@"Button_Camera_down"] forState:UIControlStateHighlighted];
 
 }
 
@@ -80,7 +80,7 @@
         
         // with an image sized to fit in the viewfinder window
         // (Resize using Trevor Harmon's UIImage+ categories)
-        overlay.image = [UIImage imageNamed:@"Camera_grid.png"];
+        overlay.image = [UIImage imageNamed:@"Camera_grid"];
         
         // tell the view to put the image at the top, and make it transparent
         overlay.contentMode = UIViewContentModeTop;

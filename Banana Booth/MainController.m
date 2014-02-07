@@ -26,9 +26,9 @@
     
     page = 0;
     
-    [start_button setImage:[UIImage imageNamed:@"Button_Start_down.PNG"] forState:UIControlStateHighlighted];
-    [left_button setImage:[UIImage imageNamed:@"Arrow_left_hoover.png"] forState:UIControlStateHighlighted];
-    [right_button setImage:[UIImage imageNamed:@"Arrow_right_hoover.png"] forState:UIControlStateHighlighted];
+    [start_button setImage:[UIImage imageNamed:@"Button_Start_down"] forState:UIControlStateHighlighted];
+    [left_button setImage:[UIImage imageNamed:@"Arrow_left_hoover"] forState:UIControlStateHighlighted];
+    [right_button setImage:[UIImage imageNamed:@"Arrow_right_hoover"] forState:UIControlStateHighlighted];
     
     left_button.enabled = NO;
     
@@ -53,7 +53,7 @@
     
     [scrollview addSubview:imageView];
     
-    imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"banana3.png"]];
+    imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"banana3"]];
     imageView.frame = CGRectMake(320*2+39, 0, 192, 283);
     
     [scrollview addSubview:imageView];    

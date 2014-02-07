@@ -57,11 +57,7 @@
     
     [shapeLayer setPath:path];
     [shapeLayer setFillColor:[[UIColor blackColor] CGColor]];
-//    [shapeLayer setBounds:CGRectMake(0, 0, 100, 100)];
-
     [[user_image_zoom layer] setMask:shapeLayer];
-    
-//    maskImage = [UIImage imageNamed:@"mask.png"];
 }
 
 
@@ -173,7 +169,7 @@
   
     CIContext *context = [CIContext contextWithOptions:nil];
     
-    UIImage *mask_image = [UIImage imageNamed:@"Result_face_mask_vertical.png"];
+    UIImage *mask_image = [UIImage imageNamed:@"Result_face_mask_vertical"];
     mask_image =  [self imageWithImage:mask_image scaledToSize:CGSizeMake(image_area.size.width, image_area.size.height)];
   
     CGImageRef mask_ref = mask_image.CGImage;
